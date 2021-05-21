@@ -13,7 +13,7 @@ lifecycle {
 prevent_destroy = true
 }
 # Enable versioning so we can see the full revision
-history of our
+#history of our
 # state files
 versioning {
 enabled = true
