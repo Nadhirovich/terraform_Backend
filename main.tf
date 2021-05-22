@@ -1,5 +1,15 @@
 terraform {
-  required_version = ">= 0.13"
+required_version = ">= 0.13"
+
+# add a backend config to To configure Terraform to store the state in an S3 bucket
+
+backend "s3" {
+bucket = "my-test-buacket"
+key = "global/s3/terraform.tfstate"
+region = "us-east-2"
+dynamodb_table = "terraform-up-and-running-locks"
+encrypt = true
+}
 }
 
 provider "aws" {
@@ -27,6 +37,8 @@ sse_algorithm = "AES256"
 }
 }
 }
+
+# create a DynamoDB table that has a primary key called LockID to use for locking
 
 resource "aws_dynamodb_table" "terraform_locks" {
 name = "terraform-up-and-running-locks"
