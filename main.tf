@@ -4,7 +4,7 @@ required_version = ">= 0.13"
 # add a backend config to To configure Terraform to store the state in an S3 bucket
 
 backend "s3" {
-bucket = var.bucket_name
+bucket = "my-test-backet"
 key = "global/s3/terraform.tfstate"
 region = "us-east-2"
 dynamodb_table = "terraform-up-and-running-locks"
