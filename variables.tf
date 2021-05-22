@@ -7,5 +7,5 @@ variable "bucket_name" {
 variable "table_name" {
   description = "The name of the DynamoDB table. Must be unique in this AWS account."
   type        = string
-  default     = "my-test-locks"
+  default     = "terraform-up-and-running-locks"
 }
