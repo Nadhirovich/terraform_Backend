@@ -4,7 +4,7 @@ required_version = ">= 0.13"
 # add a backend config to To configure Terraform to store the state in an S3 bucket
 
 backend "s3" {
-bucket = "my-test-buacket"
+bucket = var.bucket_name
 key = "global/s3/terraform.tfstate"
 region = "us-east-2"
 dynamodb_table = "terraform-up-and-running-locks"
@@ -17,7 +17,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "Tbessa-nadhirovich-bucket" {
-bucket = "my-test-buacket"
+bucket = var.bucket_name
 # Prevent accidental deletion of this S3 bucket
 lifecycle {
 prevent_destroy = true
@@ -41,7 +41,7 @@ sse_algorithm = "AES256"
 # create a DynamoDB table that has a primary key called LockID to use for locking
 
 resource "aws_dynamodb_table" "terraform_locks" {
-name = "terraform-up-and-running-locks"
+name = var.table_name
 billing_mode = "PAY_PER_REQUEST"
 hash_key = "LockID"
 attribute {
